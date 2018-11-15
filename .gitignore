@@ -16,3 +16,6 @@ target/
 # Gradle artifacts
 build/
 .gradle/
+
+# Intellij artifacts
+.idea/
