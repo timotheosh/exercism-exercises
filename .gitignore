@@ -1,0 +1,18 @@
+# Don't include mentoring directories
+users/
+
+# Vi(m) artifacts
+*.swp
+
+# Exercism tool artifacts
+*.json
+
+# Lein artifacts
+.lein-failures
+.nrepl-port
+.lein-repl-history
+target/
+
+# Gradle artifacts
+build/
+.gradle/
