@@ -1,9 +1,13 @@
 #lang racket
 
-(provide hamming-distance)
+(provide (contract-out
+          [hamming-distance
+          (->i ([a string?] [b string?])
+               #:pre (a b) ((string-length a) . = . (string-length b))
+               [result exact-nonnegative-integer?])]))
 
 (define (hamming-distance strand1 strand2)
-  (if (= (string-length strand1) (string-length strand2))
-      (count (negate char=?)
-             (string->list strand1)  (string->list strand2))
-      (error "String lengths do not match!")))
+  (for/sum [[char1 strand1]
+            [char2 strand2]
+            #:when (not (char=? char1 char2))]
+    1))
