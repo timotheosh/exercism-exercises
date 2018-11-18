@@ -1,6 +1,11 @@
 # Don't include mentoring directories
 users/
 
+# Emacs and DrRacket artifacts
+\#*
+.\#*
+*~
+
 # Vi(m) artifacts
 *.swp
 
