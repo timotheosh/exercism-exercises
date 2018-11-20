@@ -1,8 +1,8 @@
 # Don't include mentoring directories
-users/
+users
 
 # Don't include team directories
-teams/
+teams
 
 # Emacs and DrRacket artifacts
 \#*
