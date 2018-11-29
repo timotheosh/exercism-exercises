@@ -27,6 +27,7 @@ build/
 
 # Intellij artifacts
 .idea/
+.iml
 
 # Python artifacts
 __pycache__/
