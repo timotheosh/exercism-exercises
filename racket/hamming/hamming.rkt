@@ -9,5 +9,5 @@
 (define (hamming-distance strand1 strand2)
   (for/sum [[char1 strand1]
             [char2 strand2]
-            #:when (not (char=? char1 char2))]
+            #:unless (char=? char1 char2)]
     1))
