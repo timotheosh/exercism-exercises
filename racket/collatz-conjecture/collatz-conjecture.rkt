@@ -1,10 +1,7 @@
 #lang racket
 
-(define not-negative?
-  (or/c positive? zero?))
-
 (provide (contract-out
-          [collatz (->* (positive?) (not-negative?) natural-number/c)]))
+          [collatz (->* (positive?) (natural-number/c)  natural-number/c)]))
 
 (define (collatz number [step-count 0])
   (cond [(= number 1) step-count]

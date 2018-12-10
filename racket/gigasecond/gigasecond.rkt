@@ -1,9 +1,15 @@
 #lang racket
 
-(require racket/date)
+(require racket/date
+         threading)
+
+(provide (contract-out
+          [add-gigasecond
+           (->i ([startdate date?])
+                [result date?])]))
 
 (define (add-gigasecond startdate)
-  (seconds->date
-   (+ (date->seconds startdate) 1e9)))
-
-(provide add-gigasecond)
+  (~> startdate
+      date->seconds
+      (+ 1e9)
+      seconds->date))
