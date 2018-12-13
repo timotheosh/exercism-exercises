@@ -5,7 +5,7 @@
   [plain-text]
   (->>
    (partition-by identity plain-text)
-   (map #(str (if (not (= 1 (count %))) (count %)) (first %)))
+   (map #(str (when-not (= 1 (count %)) (count %)) (first %)))
    (apply str)))
 
 (defn run-length-decode
