@@ -4,8 +4,8 @@
 (defn anagrams-for
   "Returns a list of anagrams of word from prospect-list, or empty list if non found. "
   [word prospect-list]
-  (filterv (fn [x]
-             (if (= (str/lower-case word) (str/lower-case x))
-               false
-               (= (sort (str/lower-case word))
-                  (sort (str/lower-case x))))) prospect-list))
+  (filter (fn [x]
+            (and (not= (str/lower-case word) (str/lower-case x))
+                 (= (frequencies (str/lower-case word))
+                    (frequencies (str/lower-case x)))))
+          prospect-list))
