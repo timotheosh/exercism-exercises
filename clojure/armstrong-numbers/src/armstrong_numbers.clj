@@ -5,8 +5,8 @@
 
 (defn armstrong? [num]
   (->> (str num)
-       (map str)
-       (map read-string)
-       (map #(my-expt % (count (str num))))
+       (map #(Character/digit % 10))
+       ((fn [x]
+          (map #(my-expt % (count x)) x)))
        (reduce +)
-       (= num)))
+       (== num)))
