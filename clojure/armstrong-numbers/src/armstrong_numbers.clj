@@ -9,4 +9,4 @@
        ((fn [x]
           (map #(my-expt % (count x)) x)))
        (reduce +)
-       (== num)))
+       (= num)))
