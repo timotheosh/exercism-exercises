@@ -6,5 +6,4 @@
   (expt 2 (sub1 n)))
 
 (define (total)
-  (for/sum ([x (in-range 64)])
-    (square (add1 x))))
+  (sub1 (square 65)))
