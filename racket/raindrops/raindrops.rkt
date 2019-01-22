@@ -1,6 +1,8 @@
 #lang racket
 
-(provide convert)
+(provide (contract-out
+          [convert (->i ([number positive?])
+                        [result string?])]))
 
 (define (convert number)
   (let ([sound (string-append
