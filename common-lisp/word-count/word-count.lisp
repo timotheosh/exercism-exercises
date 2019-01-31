@@ -22,7 +22,6 @@
   (let ((wc '())
         (lst (string-split (string-downcase str))))
     (dolist (x lst)
-      (format t "~A~%" x)
       (let ((new-value (or (rest (assoc x wc :test 'string=))
                            0)))
         (when (> new-value 0)
