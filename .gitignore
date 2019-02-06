@@ -31,3 +31,6 @@ build/
 
 # Python artifacts
 __pycache__/
+
+# Clion artifacts
+cmake-build*
