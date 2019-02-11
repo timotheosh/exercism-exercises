@@ -4,15 +4,6 @@
 #define EXERCISM_RUN_ALL_TESTS
 
 namespace leap {
-  bool leap(int year);
-
-  bool is_leap_year(int year) {
-    if ((year % 400 == 0) ||
-        (year % 100 != 0 &&
-         year % 4 == 0))
-    return true;
-  else
-    return false;
-  }
+  bool is_leap_year(const unsigned short year);
 }
 #endif
