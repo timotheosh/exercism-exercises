@@ -1,17 +1,20 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class IsogramChecker {
 
-    boolean isIsogram(String phrase) {
-        boolean ret = true;
-        List<String> mylist = new ArrayList<String>(Arrays.asList(phrase.toLowerCase().split("")));
-        for (int i = 0; i < mylist.size(); i++) {
-            if ((!mylist.get(i).equals(" ")) && (!mylist.get(i).equals("-")) &&
-                    (mylist.indexOf(mylist.get(i)) != mylist.lastIndexOf(mylist.get(i))))
-                ret = false;
+    public boolean isIsogram(String phrase) {
+        String[] letters = phrase.replaceAll("\\W", "").toLowerCase().split("");
+
+        Map<String, Long> freq =
+                Stream.of(letters).collect(Collectors.groupingBy(Function.identity(),
+                        Collectors.counting()));
+
+        for (Map.Entry<String, Long> entry : freq.entrySet()) {
+            if (entry.getValue() > 1) return false;
         }
-        return ret;
+        return true;
     }
 }

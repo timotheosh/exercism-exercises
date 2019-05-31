@@ -1,24 +1,19 @@
 
 class RaindropConverter {
 
+    // Returns true if number is divisible by divisor, otherwise, returns false.
+    private boolean isDivisible(int number, int divisor) {
+        return number % divisor == 0;
+    }
+
     public String convert(int number) {
 
         String response = "";
 
-        for (int i = 1; i <= number; i++) {
-            if (number % i == 0) {
-                switch(i) {
-                    case 3: response += "Pling";
-                        break;
-                    case 5: response += "Plang";
-                        break;
-                    case 7: response += "Plong";
-                        break;
-                }
-            }
-        }
-        if (response.length() == 0)
-            response = String.valueOf(number);
+        if (isDivisible(number, 3)) response += "Pling";
+        if (isDivisible(number, 5)) response += "Plang";
+        if (isDivisible(number, 7)) response += "Plong";
+        if (response.isEmpty()) response = Integer.toString(number);
         return response;
     }
 }

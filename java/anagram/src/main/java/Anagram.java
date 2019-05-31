@@ -10,8 +10,7 @@ public class Anagram {
     }
 
     // Method to sort a string alphabetically
-    public String sortString(String inputString)
-    {
+    public String sortString(String inputString) {
         // convert input string to char array
         char tempArray[] = inputString.toLowerCase().toCharArray();
 
