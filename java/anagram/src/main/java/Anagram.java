@@ -3,11 +3,11 @@ import java.util.stream.Collectors;
 
 public class Anagram {
     private String matcher;
-    private String sorted_matcher;
+    private String sortedMatcher;
 
     Anagram(String string) {
         matcher = string;
-        sorted_matcher = sortString(string);
+        sortedMatcher = sortString(string);
     }
 
     // Method to sort a string alphabetically
@@ -21,7 +21,7 @@ public class Anagram {
 
     private boolean isMatch(String string){
         if (matcher.equalsIgnoreCase(string)) return false;
-        else return sorted_matcher.equals(sortString(string));
+        else return sortedMatcher.equals(sortString(string));
     }
 
     public List<String> match(List<String> list) {
