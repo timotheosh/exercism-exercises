@@ -1,34 +1,32 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Anagram {
-    String matcher;
+    private String matcher;
+    private String sorted_matcher;
 
-    Anagram(String str) {
-        matcher = str;
+    Anagram(String string) {
+        matcher = string;
+        sorted_matcher = sortString(string);
     }
 
     // Method to sort a string alphabetically
-    public String sortString(String inputString) {
-        // convert input string to char array
-        char tempArray[] = inputString.toLowerCase().toCharArray();
+    private String sortString(String inputString) {
+        return inputString.toLowerCase()
+                .codePoints()
+                .sorted()
+                .mapToObj(Character::toString)
+                .collect(Collectors.joining());
+    }
 
-        // sort tempArray
-        Arrays.sort(tempArray);
-
-        // return new sorted string
-        return new String(tempArray);
+    private boolean isMatch(String string){
+        if (matcher.equalsIgnoreCase(string)) return false;
+        else return sorted_matcher.equals(sortString(string));
     }
 
     public List<String> match(List<String> list) {
-        List<String> matches = new ArrayList<String>();
-        String sorted_matcher = sortString(matcher);
-        for (int i = 0; i < list.size(); i++) {
-            if ((!matcher.equalsIgnoreCase(list.get(i)))
-                    && (sorted_matcher.equals(sortString(list.get(i)))))
-                matches.add(list.get(i));
-        }
-        return matches;
+        return list.stream()
+                .filter(this::isMatch)
+                .collect(Collectors.toList());
     }
 }

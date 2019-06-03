@@ -1,15 +1,21 @@
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 class IsogramChecker {
 
-    public boolean isIsogram(String phrase) {
-        String[] letters = phrase.replaceAll("\\W", "").toLowerCase().split("");
+    private boolean validCharacter(String character) {
+        return (!character.equals("-") &&
+                !character.equals(" "));
+    }
 
+    public boolean isIsogram(String phrase) {
         Map<String, Long> freq =
-                Stream.of(letters).collect(Collectors.groupingBy(Function.identity(),
+                phrase.toLowerCase()
+                        .chars()
+                        .mapToObj(c -> String.valueOf((char) c))
+                        .filter(c -> validCharacter(c))
+                        .collect(Collectors.groupingBy(Function.identity(),
                         Collectors.counting()));
 
         for (Map.Entry<String, Long> entry : freq.entrySet()) {
