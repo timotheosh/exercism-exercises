@@ -6,7 +6,7 @@
   (->> plain-text
        (partition-by identity)
        (map #(str (when-not (= 1 (count %)) (count %)) (first %)))
-       (apply str)))
+       (reduce str)))
 
 (defn run-length-decode
   "decodes a run-length-encoded string"
@@ -14,5 +14,5 @@
   (->> cipher-text
        (re-seq #"\d*\D|\D")
        (map #(re-seq #"\d+|\D" %))
-       (map #(if (= (count %) 1) (apply str %) (apply str (repeat (Integer. (first %)) (second %)))))
-       (apply str)))
+       (map #(if (= (count %) 1) (reduce str %) (reduce str (repeat (Integer. (first %)) (second %)))))
+       (reduce str)))

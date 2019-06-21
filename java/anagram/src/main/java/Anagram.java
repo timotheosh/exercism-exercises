@@ -20,8 +20,8 @@ public class Anagram {
     }
 
     private boolean isMatch(String string){
-        if (matcher.equalsIgnoreCase(string)) return false;
-        else return sorted_matcher.equals(sortString(string));
+        return !matcher.equalsIgnoreCase(string)
+            && sorted_matcher.equals(sortString(string));
     }
 
     public List<String> match(List<String> list) {
