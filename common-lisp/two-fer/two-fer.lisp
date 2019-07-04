@@ -6,6 +6,5 @@
 
 (defun twofer (&optional name)
   (format nil "One for ~a, one for me."
-          (if (null name)
-              "you"
-              name)))
+          (or name
+              "you")))
