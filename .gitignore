@@ -5,6 +5,7 @@ users
 teams
 
 # Emacs and DrRacket artifacts
+.lsp/
 \#*
 .\#*
 *~
