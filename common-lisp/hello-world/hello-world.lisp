@@ -9,7 +9,3 @@
   (when (not name)
     (setf name "World"))
   (format nil "Hello ~A!" name))
-
-
-(defun better-hello-world (&optional (name "World"))
-  (format nil "Hello ~A!" name))
